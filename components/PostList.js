@@ -31,7 +31,7 @@ const PostList = ({date}) =>{
     }, [date]);
 
     const Posts = () =>{
-        return filteredPosts.map(post => <Diary emojis={post[1].emojis} name={post[1].name} text={post[1].text} timestamp={post[1].timestamp-18000}/>)
+        return filteredPosts.map((post,i) => <Diary key={i} emojis={post[1].emojis} name={post[1].name} text={post[1].text} timestamp={post[1].timestamp-18000}/>)
     }
 
     return <div><Posts/></div>

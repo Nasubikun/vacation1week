@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 // post：getStaticPropsから取得したデータ
-export default ({ post }) => {
+const PostDetail = ({ post }) => {
   return <div className={classes.root}><Header/><Detail post={post}/></div>
 }
 
@@ -56,3 +56,5 @@ export const getStaticProps = async ({ params }) => {
     },
   }
 }
+
+export default PostDetail;

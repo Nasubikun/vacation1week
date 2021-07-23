@@ -1,4 +1,4 @@
-import Calendar from './Calendar';
+import Calendar from '../components/Calendar';
 import { useState } from "react";
 import PostForm from './post';
 import { makeStyles,createTheme } from '@material-ui/core/styles';
@@ -6,7 +6,7 @@ import { AppBar } from '@material-ui/core';
 import firebase from "firebase/app";
 import 'firebase/database';
 import Link from 'next/link';
-import PostList from './PostList';
+import PostList from '../components/PostList';
 import Header from '../components/Header';
 
 

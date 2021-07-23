@@ -46,7 +46,7 @@ const PostButton = ({getValues,emojis,disabled}) =>{
             text : text,
             timestamp: Math.floor(Date.now() / 1000),
           });
-          router.push(`/share/${uuid}`)
+        router.push(`/share/${uuid}`)
         alert("投稿したよ！")
 
     }
