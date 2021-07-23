@@ -13,7 +13,7 @@ const ShareButton =({post})=>{
     const classes = useStyles();
     const router = useRouter(); 
     console.log(router.pathname)
-    const postUrl = 'localhost:3000' + "/post/" + post.id
+    const postUrl = 'https://nikki.yasan.app' + "/post/" + post.id
     const shortDiary = post.text.length>20?`${post.text.slice(0.19)}…`:post.text
     const shareText = `今日の日記を書きました。「${shortDiary}」`
     const query =`?url=${postUrl}&hashtags=みんなの絵文字日記&text=${shareText}`
