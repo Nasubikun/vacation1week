@@ -45,7 +45,7 @@ export const getStaticPaths = async () => {
 }
 
 // paramsには上記pathsで指定した値が入る（1postずつ）
-export const getStaticProps = async ({ params }) => {  
+export const getServerSideProps = async ({ params }) => {  
   // 外部APIエンドポイントを呼び出しデータ取得
   const res = await fetch(`https://vacation1weeknext-default-rtdb.firebaseio.com/posts/${params.id}.json`)
   let post = await res.json()
