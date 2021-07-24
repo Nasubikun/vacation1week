@@ -11,7 +11,8 @@ const Seo = ({
   const defaultTitle = 'みんなの絵（文字）日記'
   const defaultDescription = 'みんなの絵（文字）日記'
 
-  const title = pageTitle ? `${pageTitle} | ${defaultTitle}` : defaultTitle
+  const title = pageTitle ? pageTitle : defaultTitle
+  // const title = pageTitle ? `${pageTitle} | ${defaultTitle}` : defaultTitle
   const description = pageDescription ? pageDescription : defaultDescription
   const url = pagePath
   const imgUrl = pageImg
