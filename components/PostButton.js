@@ -28,7 +28,7 @@ const generateUuid = () => {
     return chars.join("");
 }
 
-const PostButton = ({getValues,emojis,disabled}) =>{
+const PostButton = ({getValues,emojis,disabled,setIsLoading}) =>{
     const router = useRouter()
     const submitPost = async() =>{
         const name = getValues('name')
@@ -40,7 +40,8 @@ const PostButton = ({getValues,emojis,disabled}) =>{
             text : text,
             timestamp: Math.floor(Date.now() / 1000),
           })
-        firebase.database().ref('posts/' + uuid).set({
+        setIsLoading(true);
+        await firebase.database().ref('posts/' + uuid).set({
             emojis: emojis,
             name: name,
             text : text,
@@ -48,7 +49,6 @@ const PostButton = ({getValues,emojis,disabled}) =>{
           });
         router.push(`/share/${uuid}`)
         alert("投稿したよ！")
-
     }
 
 

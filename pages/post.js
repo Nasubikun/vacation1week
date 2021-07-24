@@ -9,6 +9,7 @@ import Diary from '../components/Diary';
 import DiaryPreview from '../components/DiaryPreview'
 import PostButton from '../components/PostButton';
 import Header from '../components/Header';
+import Loading from '../components/Loading';
 
 let isSm = false;
 
@@ -83,6 +84,11 @@ const useStyles = makeStyles((theme) => ({
         marginTop: 20,
         marginBottom: 20
     },
+    statement:{
+      width:'80%',
+      margin:'0 auto',
+      marginBottom:10,
+    },
     button:{
       marginTop:14,
       marginBottom:14,
@@ -99,6 +105,7 @@ const PostForm = () =>{
     const [currentNo, setCurrentNo] = useState(false);
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [isShowPreview, setIsShowPreview] = useState(false);
+    const [isLoading ,setIsLoading] = useState(false);
     const [emojis, setEmoji] = useReducer(reducer,[{id:"watermelon",unicode:"🍉"},{id:"beach_with_umbrella",unicode:"🏖️"},{id:"shaved_ice",unicode:"🍧"}])
     const { register,formState: { errors } , handleSubmit, getValues,} = useForm({mode: 'onChange',});
     const onSubmit = data => console.log(data);
@@ -137,7 +144,12 @@ const PostForm = () =>{
     }
     
     
-    return <div　className={classes.root}><Header/>{isShowPreview?<DiaryPreview name={getValues("name")} emojis={emojis} text={getValues("diary")} timestamp={Math.floor(Date.now() / 1000)-18000} isShow={isShowPreview} setIsShow={setIsShowPreview} />:<>
+    return <div　className={classes.root}><Header/>
+    {isLoading ? <Loading/> : 
+    isShowPreview?
+    <DiaryPreview name={getValues("name")} emojis={emojis} text={getValues("diary")} timestamp={Math.floor(Date.now() / 1000)-18000} isShow={isShowPreview} setIsShow={setIsShowPreview} />
+      :
+    <>
     <Paper elevation={5} className={classes.paper}>
     <div className = {classes.emojiContainer}>
         <button onClick = {(e) => onEmojiClick(0,e)} className={classes.emojiButton}><Emoji emoji={emojis[0]} size={emojiSize} className={classes.emoji} set='twitter'/></button>
@@ -204,17 +216,15 @@ const PostForm = () =>{
       </span>
     </div>
     </form>
+    <div className={classes.statement}>
+      日付は午前5時に切り替わります。<br/>（0～5時に書かれた日記は前日の日記として投稿されます）
+    </div>
     </Paper>
     <Button className={classes.button} onClick={()=>{setIsShowPreview(true)}} disabled={errors.name || errors.diary} variant="contained">
       プレビュー
     </Button>
-    {/* <Card>
-      <CardContent>
-        
-      </CardContent>
-    </Card> */}
     </>}
-    <PostButton className={classes.button} getValues={getValues} emojis={emojis} disabled={errors.name || errors.diary}></PostButton>
+    <PostButton className={classes.button} getValues={getValues} emojis={emojis} disabled={errors.name || errors.diary} setIsLoading={setIsLoading}></PostButton>
     </div>
 
 }
