@@ -137,10 +137,10 @@ const PostForm = () =>{
     }
 
     const onEmojiClick = (id,e) =>{
-        console.log(e)
-        setCurrentNo(id)
-        console.log({ x: e.clientX, y: e.clientY })
+      if(e){
         setPosition({ x: e.clientX, y: e.clientY });
+      }
+        setCurrentNo(id)
     }
     
     
