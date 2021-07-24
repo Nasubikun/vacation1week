@@ -109,36 +109,10 @@ const PostForm = () =>{
     const [emojis, setEmoji] = useReducer(reducer,[{id:"watermelon",unicode:"🍉"},{id:"beach_with_umbrella",unicode:"🏖️"},{id:"shaved_ice",unicode:"🍧"}])
     const { register,formState: { errors } , handleSubmit, getValues,} = useForm({mode: 'onChange',});
     const onSubmit = data => console.log(data);
-
-    let ua = window.navigator.userAgent.toLowerCase();
-
-    if ((ua.indexOf('safari') !== -1 && ua.indexOf('chrome') === -1 && ua.indexOf('edge') === -1)){
-      useEffect(() => {
-        document.addEventListener("touchstart", handleDocumentClick, false);
-      });
-
-      const handleDocumentClick = event => {
-        let isEmojiClassFound = false;
     
-        event &&
-          event.path &&
-          event.path.forEach(elem => {
-            if (elem && elem.classList) {
-              const data = elem.classList.value;
-              if (data.includes("emoji")) {
-                isEmojiClassFound = true;
-              }
-            }
-          }); // end
-        if ( isEmojiClassFound === false && event.target.id !== "emojis-btn")
-          setCurrentNo(false);
-      };
-
-    }
-
 
     useEffect(() => {
-        document.addEventListener("click", handleDocumentClick, false);
+        document.getElementById('__next').addEventListener("click", handleDocumentClick, false);;
       });
 
       const handleDocumentClick = event => {
@@ -171,7 +145,7 @@ const PostForm = () =>{
     }
     
     
-    return <div　className={classes.root}><Header/>
+    return <div id={'event'} className={classes.root}><Header/>
     {isLoading ? <Loading/> : 
     isShowPreview?
     <><DiaryPreview name={getValues("name")} emojis={emojis} text={getValues("diary")} timestamp={Math.floor(Date.now() / 1000)-18000} isShow={isShowPreview} setIsShow={setIsShowPreview} />
