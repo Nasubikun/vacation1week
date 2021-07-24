@@ -216,9 +216,7 @@ const PostForm = () =>{
       </span>
     </div>
     </form>
-    <div className={classes.statement}>
-      日付は午前5時に切り替わります。<br/>（0～5時に書かれた日記は前日の日記として投稿されます）
-    </div>
+    <div className={classes.statement}>日付は午前5時に切り替わります。<br/>（0～5時に書かれた日記は前日の日記として投稿されます）</div>
     </Paper>
     <Button className={classes.button} onClick={()=>{setIsShowPreview(true)}} disabled={errors.name || errors.diary} variant="contained">
       プレビュー
