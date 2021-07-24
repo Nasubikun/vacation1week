@@ -74,9 +74,10 @@ const useStyles = makeStyles((theme) => ({
         // backgroundSize: '100% 2em',
     },
     diaryNameContainer:{
-        width: '2em',
+        width: '2rem',
         marginTop: 20,
         marginBottom: 20,
+        marginLeft: 0,
         // backgroundSize: '100% 2em',
     },
     diaryText:{
@@ -96,14 +97,18 @@ const useStyles = makeStyles((theme) => ({
         font:"400 20px Yomogi",
         marginTop: 20,
         marginBottom: 20,
-        writingMode: 'vertical-rl',
-        textOrientation: 'upright',
+        display: 'flex',
+        flexDirection: 'row-reverse'
         // backgroundSize: '100% 2em',
     },
     diaryLiner:{
+        writingMode: 'vertical-rl',
+        textOrientation: 'upright',
         background: 'linear-gradient(90deg, #ccc 1px, transparent 1px)',
     },
     diaryLinerFirst:{
+        writingMode: 'vertical-rl',
+        textOrientation: 'upright',
         paddingRight: '0.2em',
         marginRight: '0em',
         background: 'linear-gradient(90deg, #ccc 1px, transparent 1px)',
