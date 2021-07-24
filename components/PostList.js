@@ -35,7 +35,13 @@ const PostList = ({date}) =>{
     }, [date]);
 
     const Posts = () =>{
-        return filteredPosts.map((post,i) => <Diary key={i} emojis={post[1].emojis} name={post[1].name} text={post[1].text} timestamp={post[1].timestamp-18000}/>)
+        return filteredPosts.sort(function(a, b) {
+            if (a[1].timestamp < b[1].timestamp) {
+                return 1;
+            } else {
+                return -1;
+            }
+         }).map((post,i) => <Diary key={i} emojis={post[1].emojis} name={post[1].name} text={post[1].text} timestamp={post[1].timestamp-18000}/>)
     }
 
     return <div>{isLoading?<Loading/>:<Posts/>}</div>
