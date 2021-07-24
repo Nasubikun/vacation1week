@@ -11,7 +11,8 @@ const PostList = ({date}) =>{
         const ts = Math.floor(new Date(date.getFullYear(),date.getMonth(),date.getDate()).getTime() / 1000)
         const filtered = posts.filter(post => post[1].timestamp>ts+18000&&post[1].timestamp<ts+86400+18000)
         // Object.keys(allPosts).forEach(key => {if(allPosts[key].timestamp>ts+18000&&allPosts[key].timestamp<ts+86400+18000){filtered[key]=allPosts[key]}})
-        setFilteredPosts(filtered)
+        console.log(filtered)
+        return filtered;
     }
     useEffect(() => {
         fetch('https://vacation1weeknext-default-rtdb.firebaseio.com/posts.json') // realtime database
@@ -20,7 +21,7 @@ const PostList = ({date}) =>{
                 (result) => {
                     console.log({result})
                     setAllPosts(Object.entries(result));
-                    filterPosts(Object.entries(result));
+                    setFilteredPosts(filterPosts(Object.entries(result)));
                     setIsLoading(false);
                 },
                 (error) => {
@@ -30,7 +31,7 @@ const PostList = ({date}) =>{
     }, []);
     useEffect(() => {
         if(allPosts){
-        filterPosts(allPosts)
+        setFilteredPosts(filterPosts(allPosts));
         }
     }, [date]);
 
