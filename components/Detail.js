@@ -34,7 +34,7 @@ const Detail = ({post}) =>{
     <div className={classes.root}>
       <Seo
         pageTitle='みんなの絵（文字）日記'
-        pageDescription={post.text}
+        pageDescription={`「${post.text}」`}
         pageImg={reqUrl}
         pageImgWidth={1386}
         pageImgHeight={790}
