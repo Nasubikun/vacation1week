@@ -110,26 +110,34 @@ const PostForm = () =>{
     const { register,formState: { errors } , handleSubmit, getValues,} = useForm({mode: 'onChange',});
     const onSubmit = data => console.log(data);
 
-    useEffect(() => {
-        document.addEventListener("click", handleDocumentClick, false);
-      });
+    let ua = window.navigator.userAgent.toLowerCase();
 
-      const handleDocumentClick = event => {
-        let isEmojiClassFound = false;
-    
-        event &&
-          event.path &&
-          event.path.forEach(elem => {
-            if (elem && elem.classList) {
-              const data = elem.classList.value;
-              if (data.includes("emoji")) {
-                isEmojiClassFound = true;
-              }
+    if (!(ua.indexOf('safari') !== -1 && ua.indexOf('chrome') === -1 && ua.indexOf('edge') === -1)){
+    // ここにSafari用の記述
+    useEffect(() => {
+      document.addEventListener("click", handleDocumentClick, false);
+    });
+
+    const handleDocumentClick = event => {
+      let isEmojiClassFound = false;
+  
+      event &&
+        event.path &&
+        event.path.forEach(elem => {
+          if (elem && elem.classList) {
+            const data = elem.classList.value;
+            if (data.includes("emoji")) {
+              isEmojiClassFound = true;
             }
-          }); // end
-        if ( isEmojiClassFound === false && event.target.id !== "emojis-btn")
-          setCurrentNo(false);
-      };
+          }
+        }); // end
+      if ( isEmojiClassFound === false && event.target.id !== "emojis-btn")
+        setCurrentNo(false);
+    };
+    }
+
+
+
 
     const onEmojiSelect = (action) =>{
         setEmoji(action)
