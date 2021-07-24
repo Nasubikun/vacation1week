@@ -147,7 +147,8 @@ const PostForm = () =>{
     return <div　className={classes.root}><Header/>
     {isLoading ? <Loading/> : 
     isShowPreview?
-    <DiaryPreview name={getValues("name")} emojis={emojis} text={getValues("diary")} timestamp={Math.floor(Date.now() / 1000)-18000} isShow={isShowPreview} setIsShow={setIsShowPreview} />
+    <><DiaryPreview name={getValues("name")} emojis={emojis} text={getValues("diary")} timestamp={Math.floor(Date.now() / 1000)-18000} isShow={isShowPreview} setIsShow={setIsShowPreview} />
+    <PostButton className={classes.button} getValues={getValues} emojis={emojis} disabled={errors.name || errors.diary} setIsLoading={setIsLoading}></PostButton></>
       :
     <>
     <Paper elevation={5} className={classes.paper}>
@@ -221,8 +222,8 @@ const PostForm = () =>{
     <Button className={classes.button} onClick={()=>{setIsShowPreview(true)}} disabled={errors.name || errors.diary} variant="contained">
       プレビュー
     </Button>
-    </>}
     <PostButton className={classes.button} getValues={getValues} emojis={emojis} disabled={errors.name || errors.diary} setIsLoading={setIsLoading}></PostButton>
+    </>}
     </div>
 
 }
