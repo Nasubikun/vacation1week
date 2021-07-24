@@ -1,7 +1,9 @@
 import { useEffect,useState } from "react";
 import Diary from "../components/Diary";
+import Loading from "./Loading";
 
 const PostList = ({date}) =>{
+    const [isLoading,setIsLoading] = useState(true);
     const [allPosts,setAllPosts] = useState([]);
     const [filteredPosts,setFilteredPosts] = useState([]);
 
@@ -17,10 +19,12 @@ const PostList = ({date}) =>{
             .then(
                 (result) => {
                     console.log({result})
-                    setAllPosts(Object.entries(result))
-                    filterPosts(Object.entries(result))
+                    setAllPosts(Object.entries(result));
+                    filterPosts(Object.entries(result));
+                    setIsLoading(false);
                 },
                 (error) => {
+                    alert("データの取得中にエラーが発生しました。")
                 }
             );
     }, []);
@@ -34,7 +38,7 @@ const PostList = ({date}) =>{
         return filteredPosts.map((post,i) => <Diary key={i} emojis={post[1].emojis} name={post[1].name} text={post[1].text} timestamp={post[1].timestamp-18000}/>)
     }
 
-    return <div><Posts/></div>
+    return <div>{isLoading?<Loading/>:<Posts/>}</div>
 }
 
 export default PostList;
