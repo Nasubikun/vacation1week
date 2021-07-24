@@ -93,7 +93,12 @@ const useStyles = makeStyles((theme) => ({
       marginTop:14,
       marginBottom:14,
       font:"400 16px Kosugi Maru",
-  }
+    },
+    event:{
+      height:'100vh',
+      width:'100vw',
+      position:'absolute',
+    }
   }));
 
 
@@ -112,8 +117,10 @@ const PostForm = () =>{
     
 
     useEffect(() => {
-        document.getElementById('__next').addEventListener("click", handleDocumentClick, false);;
-      });
+      if(document.getElementById('event')){
+        document.getElementById('event').addEventListener("click", handleDocumentClick, false);;
+      }
+      },[currentNo]);
 
       const handleDocumentClick = event => {
         let isEmojiClassFound = false;
@@ -145,7 +152,7 @@ const PostForm = () =>{
     }
     
     
-    return <div id={'event'} className={classes.root}><Header/>
+    return <div className={classes.root}><Header/>
     {isLoading ? <Loading/> : 
     isShowPreview?
     <><DiaryPreview name={getValues("name")} emojis={emojis} text={getValues("diary")} timestamp={Math.floor(Date.now() / 1000)-18000} isShow={isShowPreview} setIsShow={setIsShowPreview} />
@@ -220,6 +227,7 @@ const PostForm = () =>{
     </form>
     <div className={classes.statement}>日付は午前5時に切り替わります。<br/>（0～5時に書かれた日記は前日の日記として投稿されます）</div>
     </Paper>
+    {currentNo!==false&&<div id="event" className={classes.event}/>}
     <Button className={classes.button} onClick={()=>{setIsShowPreview(true)}} disabled={errors.name || errors.diary} variant="contained">
       プレビュー
     </Button>
