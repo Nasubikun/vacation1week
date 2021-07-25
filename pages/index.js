@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Home() {
   const classes = useStyles();
-  const [previewDate, setPreviewDate] = useState(new Date(new Date().getTime()+14400000));
+  const [previewDate, setPreviewDate] = useState(new Date(new Date().getTime()-14400000));
 
 //   useEffect(() => {
 //     fetch('https://vacation1week-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json') // realtime database
