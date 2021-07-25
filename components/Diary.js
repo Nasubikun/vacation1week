@@ -118,7 +118,7 @@ const useStyles = makeStyles((theme) => ({
 
 const timestamp2dateStr = (timestamp) =>{
     console.log(timestamp)
-    const date = new Date(timestamp*1000);
+    const date = new Date(timestamp*1000-18000000);
     return `${date.getMonth()+1}月${date.getDate()}日`
 }
 
