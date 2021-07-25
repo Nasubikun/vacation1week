@@ -6,9 +6,9 @@ import { useEffect } from "react";
 
 const Calendar = ({date,setDate}) =>{
 
-  useEffect(() =>{
-    setDate(parseISO(date))
-  },[]);
+  // useEffect(() =>{
+  //   setDate(parseISO(date))
+  // },[]);
 
     // const [previewDate, setPreviewDate] = useState(new Date());
     console.log({date})
