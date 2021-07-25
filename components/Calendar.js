@@ -5,6 +5,7 @@ import jaLocale from "date-fns/locale/ja";
 const Calendar = ({date,setDate}) =>{
 
     // const [previewDate, setPreviewDate] = useState(new Date());
+    console.log(date)
 
     return <MuiPickersUtilsProvider utils={DateFnsUtils} locale={jaLocale}>
     <DatePicker
