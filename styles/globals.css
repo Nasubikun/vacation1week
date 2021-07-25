@@ -20,7 +20,7 @@ div#__next > div {
   height: 100%;
 } */
 
-div.MuiPickersStaticWrapper-staticWrapperRoot{
+/* div.MuiPickersStaticWrapper-staticWrapperRoot{
   background-color: #f8feff;
 }
 
@@ -28,14 +28,16 @@ button.MuiPickersCalendarHeader-iconButton{
   background-color: #f8feff;
 
 }
+
+button.MuiPickersCalendarHeader-iconButton{
+  background-color: #f8feff;
+} */
+
 
 span.MuiButton-label{
   font: 400 16px Kosugi Maru;
 }
 
-button.MuiPickersCalendarHeader-iconButton{
-  background-color: #f8feff;
-}
 
 :root{
   margin: 0 auto;
