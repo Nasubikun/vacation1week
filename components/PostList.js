@@ -8,6 +8,7 @@ const PostList = ({date}) =>{
     const [filteredPosts,setFilteredPosts] = useState([]);
 
     const filterPosts = (posts) =>{
+        console.log({dateInPostList:date})
         const ts = Math.floor(new Date(date.getFullYear(),date.getMonth(),date.getDate()).getTime() / 1000)
         const filtered = posts.filter(post => post[1].timestamp>ts+18000&&post[1].timestamp<ts+86400+18000)
         // Object.keys(allPosts).forEach(key => {if(allPosts[key].timestamp>ts+18000&&allPosts[key].timestamp<ts+86400+18000){filtered[key]=allPosts[key]}})
