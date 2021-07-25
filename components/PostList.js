@@ -41,7 +41,7 @@ const PostList = ({date}) =>{
             } else {
                 return -1;
             }
-         }).map((post,i) => <Diary key={i} emojis={post[1].emojis} name={post[1].name} text={post[1].text} timestamp={post[1].timestamp-18000}/>)
+         }).map(post => <Diary key={post[0]} emojis={post[1].emojis} name={post[1].name} text={post[1].text} timestamp={post[1].timestamp-18000}/>)
     }
 
     return <div>{isLoading?<Loading/>:<Posts/>}</div>
