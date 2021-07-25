@@ -16,7 +16,6 @@ const Calendar = ({date,setDate}) =>{
       openTo="date"
       value={date}
       onChange={setDate}
-      disableFuture={true}
     />
 </MuiPickersUtilsProvider>
 }
