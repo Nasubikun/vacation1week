@@ -15,7 +15,7 @@ const Calendar = ({date,setDate}) =>{
 
     return <MuiPickersUtilsProvider utils={DateFnsUtils} locale={jaLocale}>
     <DatePicker
-      autoOk={true}
+      // autoOk={true}
       orientation="landscape"
       variant="static"
     //   disablePast={true}
