@@ -13,7 +13,7 @@ const emojiSize =  isSm?48:64;
 console.log(emojiSize)
 const useStyles = makeStyles((theme) => ({
     root: {
-        height: 570,
+        height: 540,
         minWidth: 350,
     //   display: 'flex',
     //   flexWrap: 'wrap',
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
         width: "90%",
         margin: '0 auto',
         marginTop: 20,
-        height: '90%',
+        height: '95%',
         display: 'flex',
         alignItems: 'center',
         flexDirection: 'column',

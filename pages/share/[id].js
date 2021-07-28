@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 // post：getStaticPropsから取得したデータ
 const ShareDetail= ({ post }) => {
   const classes = useStyles()
-  return <div className={classes.root}><Header/><Detail post={post}/><ShareButton post={post}/></div>
+  return <div className={classes.root}><Header/><Detail post={post}/><ShareButton post={post} message={'今日の日記を書きました。'} labelText={'Twitterでシェア！'}/></div>
 }
 
 // export const getStaticPaths = async () => {

@@ -1,8 +1,20 @@
 import { useEffect,useState } from "react";
+import ShareButton from "./ShareButton";
 import Diary from "../components/Diary";
 import Loading from "./Loading";
+import { makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+    OnePost: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      paddingBottom: 12
+    },
+  }));
 
 const PostList = ({date}) =>{
+    const classes = useStyles()
     const [isLoading,setIsLoading] = useState(true);
     const [allPosts,setAllPosts] = useState([]);
     const [filteredPosts,setFilteredPosts] = useState([]);
@@ -42,7 +54,7 @@ const PostList = ({date}) =>{
             } else {
                 return -1;
             }
-         }).map(post => <Diary key={post[0]} emojis={post[1].emojis} name={post[1].name} text={post[1].text} timestamp={post[1].timestamp-18000}/>)
+         }).map(post => <div className={classes.OnePost}><Diary key={post[0]} emojis={post[1].emojis} name={post[1].name} text={post[1].text} timestamp={post[1].timestamp-18000}/><ShareButton post={{id:post[0],emojis:post[1].emojis,name:post[1].name,text:post[1].text,timestamp:post[1].timestamp}} message={'いいね！'} labelText={'この日記をシェアする！'}/></div>)
     }
 
     return <div>{isLoading?<Loading/>:<Posts/>}</div>

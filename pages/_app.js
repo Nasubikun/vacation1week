@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import '../styles/Diary.css'
 import firebase from "firebase/app";
 import 'firebase/database';
+import { useEffect } from 'react';
 
 const config = {
   apiKey: "AIzaSyDkms57akC85RCpSGmh1BlNKs6B0VIz7OI",
@@ -22,6 +23,14 @@ console.log(db)
 
 
 function MyApp({ Component, pageProps }) {
+
+  useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side');
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
   return <Component {...pageProps} />
 }
 
