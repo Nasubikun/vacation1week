@@ -54,7 +54,7 @@ const PostList = ({date}) =>{
             } else {
                 return -1;
             }
-         }).map(post => <div className={classes.OnePost}><Diary key={post[0]} emojis={post[1].emojis} name={post[1].name} text={post[1].text} timestamp={post[1].timestamp-18000}/><ShareButton post={{id:post[0],emojis:post[1].emojis,name:post[1].name,text:post[1].text,timestamp:post[1].timestamp}} message={'いいね！'} labelText={'この日記をシェアする！'}/></div>)
+         }).map(post => <div className={classes.OnePost}><Diary key={post[0]} emojis={post[1].emojis} name={post[1].name} text={post[1].text} timestamp={post[1].timestamp-18000}/><ShareButton key={post[0]} post={{id:post[0],emojis:post[1].emojis,name:post[1].name,text:post[1].text,timestamp:post[1].timestamp}} message={'いいね！'} labelText={'この日記をシェアする！'}/></div>)
     }
 
     return <div>{isLoading?<Loading/>:<Posts/>}</div>
