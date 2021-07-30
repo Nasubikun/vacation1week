@@ -201,11 +201,11 @@ const PostForm = () =>{
                 />}
         <form onSubmit={handleSubmit(onSubmit)}>
     <div className={classes.diaryTextRoot}>
-      <input className={classes.diaryTextInput} placeholder="お名前（８文字まで）" {...register("name",{
+      <input className={classes.diaryTextInput} placeholder="お名前（９文字まで）" {...register("name",{
               required: true,
               maxLength: {
-                value: 8,
-                message: '8文字以内で入力してください',
+                value: 9,
+                message: '9文字以内で入力してください',
               },
             })}/>
       <span>
