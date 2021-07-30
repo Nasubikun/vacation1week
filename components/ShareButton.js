@@ -12,13 +12,11 @@ const useStyles = makeStyles((theme) => ({
 const ShareButton =({post, message,labelText})=>{
     const classes = useStyles();
     const router = useRouter(); 
-    console.log(router.pathname)
     const postUrl = 'https://nikki.yasan.app' + "/posts/" + post.id
-    const shortDiary = post.text.length>20?`${post.text.slice(0.19)}…`:post.text
+    const shortDiary = post.text.length>20?`${post.text.slice(0,19)}…`:post.text
     const shareText = `${message}「${shortDiary}」`
     const query =`?url=${postUrl}&hashtags=みんなの絵文字日記&text=${shareText}`
     const shareUrl = `https://twitter.com/intent/tweet${encodeURI(query)}`
-    console.log(shareUrl)
 
     return <Button className={classes.shareButton} href={shareUrl} variant="contained"><TwitterIcon/>{labelText}</Button>
 }
