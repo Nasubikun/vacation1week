@@ -33,7 +33,7 @@ const PostList = ({date}) =>{
                 (result) => {
                     console.log({result})
                     setAllPosts(Object.entries(result));
-                    setFilteredPosts(filterPosts(Object.entries(result)));
+                    setFilteredPosts(Object.entries(result));
                     setIsLoading(false);
                 },
                 (error) => {
