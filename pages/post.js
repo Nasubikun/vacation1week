@@ -112,7 +112,7 @@ const PostForm = () =>{
     const [isShowPreview, setIsShowPreview] = useState(false);
     const [isLoading ,setIsLoading] = useState(false);
     const [emojis, setEmoji] = useReducer(reducer,[{id:"watermelon",unicode:"🍉"},{id:"beach_with_umbrella",unicode:"🏖️"},{id:"shaved_ice",unicode:"🍧"}])
-    const { register,formState: { errors } , handleSubmit, getValues,} = useForm({mode: 'onChange',});
+    const { register,formState: { errors } ,watch, handleSubmit, getValues,} = useForm({mode: 'onChange',});
     const onSubmit = data => console.log(data);
     
 
@@ -139,6 +139,15 @@ const PostForm = () =>{
           setCurrentNo(false);
       };
 
+    // useEffect(()=>{
+    //   if(!watch('name')){
+    //     console.log(watch('name'))
+    //     setIsEmpty(false);
+    //   }
+    // },[watch('name'),watch('diary')])
+
+    const isNotEmpty = watch('name')&&watch('diary')
+
     const onEmojiSelect = (action) =>{
         setEmoji(action)
         setCurrentNo(false);
@@ -150,6 +159,7 @@ const PostForm = () =>{
       }
         setCurrentNo(id)
     }
+
     
     
     return <div className={classes.root}><Header/>
@@ -207,8 +217,13 @@ const PostForm = () =>{
                 value: 9,
                 message: '9文字以内で入力してください',
               },
+              minLength: {
+                value: 1,
+                message: '名前を入力してください'
+              }
             })}/>
       <span>
+        {errors.name?.type === 'minLength' && "名無しだよ！"}
         {errors.name?.type === 'maxLength' && "名前が長すぎます！"}
         {errors.name?.type === 'required' && "名無しだよ！"}
       </span>
@@ -218,8 +233,13 @@ const PostForm = () =>{
                 value: 50,
                 message: '50文字以内で入力してください',
               },
+              minLength: {
+                value: 1,
+                message: '日記を入力してください'
+              }
             })} cols="40" rows="4" />
       <span>
+        {errors.diary?.type === 'minLength' && "日記を書いてね！"}
         {errors.diary?.type === 'maxLength' && "日記が長すぎます！"}
         {errors.diary?.type === 'required' && "日記を書いてね！"}
       </span>
@@ -231,7 +251,7 @@ const PostForm = () =>{
     <Button className={classes.button} onClick={()=>{setIsShowPreview(true)}} disabled={errors.name || errors.diary} variant="contained">
       プレビュー
     </Button>
-    <PostButton className={classes.button} getValues={getValues} emojis={emojis} disabled={errors.name || errors.diary} setIsLoading={setIsLoading}></PostButton>
+    <PostButton className={classes.button} getValues={getValues} emojis={emojis} disabled={errors.name || errors.diary ||!isNotEmpty} setIsLoading={setIsLoading}></PostButton>
     </>}
     </div>
 
