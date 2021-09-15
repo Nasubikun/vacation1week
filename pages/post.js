@@ -197,6 +197,7 @@ const PostForm = () =>{
                     custom: 'カスタム',
                 },
                 }}
+                set="twitter"
                 style={isSm?{
                     position: 'absolute',
                     zIndex: '1',
