@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { CardContent, Paper } from '@material-ui/core';
 import 'emoji-mart/css/emoji-mart.css'
@@ -142,22 +143,26 @@ const Diary = ({name,emojis,text,timestamp}) =>{
 
     const classes = useStyles();
 
+    const Inside = useMemo(()=>{
+        return <Paper elevation={5} className={classes.paper}>
+        <div className = {classes.emojiContainer}>
+            <Emoji emoji={emojis[0]} size={emojiSize} className={classes.emoji} set='twitter'/>
+            <Emoji emoji={emojis[1]} size={emojiSize} className={classes.emoji} set='twitter'/>
+            <Emoji emoji={emojis[2]} size={emojiSize} className={classes.emoji} set='twitter'/>
+        </div>
+        <div className={classes.diaryTextContainer}>
+        <div className={classes.diaryDate}>{timestamp2dateStr(timestamp)}</div>
+        <div className={classes.diaryNameContainer}>
+        <div className={classes.diaryNameTitle}>名前：</div>
+        <div className={classes.diaryName}>{name}</div>
+        </div>
+        <div className={classes.diaryText} >{alignPTags(text)} </div>
+        </div>
+        </Paper>
+    })
+
     return <div className={classes.root}>
-    <Paper elevation={5} className={classes.paper}>
-    <div className = {classes.emojiContainer}>
-        <Emoji emoji={emojis[0]} size={emojiSize} className={classes.emoji} set='twitter'/>
-        <Emoji emoji={emojis[1]} size={emojiSize} className={classes.emoji} set='twitter'/>
-        <Emoji emoji={emojis[2]} size={emojiSize} className={classes.emoji} set='twitter'/>
-    </div>
-    <div className={classes.diaryTextContainer}>
-    <div className={classes.diaryDate}>{timestamp2dateStr(timestamp)}</div>
-    <div className={classes.diaryNameContainer}>
-    <div className={classes.diaryNameTitle}>名前：</div>
-    <div className={classes.diaryName}>{name}</div>
-    </div>
-    <div className={classes.diaryText} >{alignPTags(text)} </div>
-    </div>
-    </Paper>
+        {Inside}
     </div>
 }
 
