@@ -101,7 +101,30 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-
+const setDefaultEmoji = () =>{
+  const now = new Date()
+  const month = now.getMonth()
+  const date = now.getDate()
+  if(month==9 && date==31){
+    return [{id:"jack_o_lantern",unicode:"🎃"},{id:"jack_o_lantern",unicode:"🎃"},{id:"jack_o_lantern",unicode:"🎃"}]
+  }
+  if(month==11 && (date==24 || date==25)){
+    return [{id:"christmas_tree",unicode:"🎄"},{id:"santa",unicode:"🎅"},{id:"gift",unicode:"🎁"}]
+  }
+  if(month >= 2 && month <=4){
+    return [{id:"dolls",unicode:"🎎"},{id:"cherry_blossom",unicode:"🌸"},{id:"mortar_board",unicode:"🎓"}]
+  }
+  if(month >= 5 && month <=7){
+    return [{id:"watermelon",unicode:"🍉"},{id:"beach_with_umbrella",unicode:"🏖️"},{id:"shaved_ice",unicode:"🍧"}]
+  }
+  if(month >= 8 && month <=10){
+    return [{id:"fallen_leaf",unicode:"🍂"},{id:"eggplant",unicode:"🍆"},{id:"rice_scene",unicode:"🎑"}]
+  }
+  if(month == 11 || month <=1){
+    return [{id:"tangerine",unicode:"🍊"},{id:"snowman",unicode:"☃️"},{id:"skier",unicode:"⛷️"}]
+  }
+  return [{id:"watermelon",unicode:"🍉"},{id:"beach_with_umbrella",unicode:"🏖️"},{id:"shaved_ice",unicode:"🍧"}]
+}
   
 
 const PostForm = () =>{
@@ -111,7 +134,7 @@ const PostForm = () =>{
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [isShowPreview, setIsShowPreview] = useState(false);
     const [isLoading ,setIsLoading] = useState(false);
-    const [emojis, setEmoji] = useReducer(reducer,[{id:"watermelon",unicode:"🍉"},{id:"beach_with_umbrella",unicode:"🏖️"},{id:"shaved_ice",unicode:"🍧"}])
+    const [emojis, setEmoji] = useReducer(reducer,setDefaultEmoji())
     const { register,formState: { errors } ,watch, handleSubmit, getValues,} = useForm({mode: 'onChange',});
     const onSubmit = data => console.log(data);
     
