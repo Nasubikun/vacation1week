@@ -76,7 +76,7 @@ const PostList = ({date,previewName}) =>{
             } else {
                 return -1;
             }
-         }).map(post => <div key={post[0]} className={classes.OnePost}><Diary key={post[0]} emojis={post[1].emojis} name={post[1].name} text={post[1].text} timestamp={post[1].timestamp-18000}/><ShareButton key={post[0]} post={{id:post[0],emojis:post[1].emojis,name:post[1].name,text:post[1].text,timestamp:post[1].timestamp}} message={'いいね！'} labelText={'この日記をシェアする！'}/></div>).slice(0, previewLimit)
+         }).map(post => <div key={post[0]} className={classes.OnePost}><Diary key={post[0]} emojis={post[1].emojis} name={post[1].name} text={post[1].text} timestamp={post[1].timestamp}/><ShareButton key={post[0]} post={{id:post[0],emojis:post[1].emojis,name:post[1].name,text:post[1].text,timestamp:post[1].timestamp}} message={'いいね！'} labelText={'この日記をシェアする！'}/></div>).slice(0, previewLimit)
     }
 
     return <div>{isLoading?<Loading/>:<div className={classes.PostsContainer}><Posts/><Button className={classes.LoadMoreButton} onClick={()=>loadMore()} variant="contained">さらに表示</Button></div>}</div>

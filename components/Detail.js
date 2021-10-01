@@ -39,7 +39,7 @@ const Detail = ({post}) =>{
         pageImgWidth={1386}
         pageImgHeight={790}
       />
-      <Diary emojis={post.emojis} name={post.name} text={post.text} timestamp={post.timestamp-18000}/>
+      <Diary emojis={post.emojis} name={post.name} text={post.text} timestamp={post.timestamp}/>
       <Link href='/'>トップに戻る</Link>
     </div>
   )
